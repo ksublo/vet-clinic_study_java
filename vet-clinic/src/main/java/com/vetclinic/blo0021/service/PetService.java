@@ -13,11 +13,37 @@ public class PetService {
     @Autowired
     private PetRepository petRepository;
 
+    // Fetch all pets
     public List<Pet> getAllPets() {
         return petRepository.findAll();
     }
 
+    // Add a new pet
     public Pet savePet(Pet pet) {
         return petRepository.save(pet);
+    }
+
+    // Get a pet by ID
+    public Pet getPetById(Long petID) {
+        return petRepository.findById(petID)
+                .orElseThrow(() -> new RuntimeException("Pet not found!"));
+    }
+
+    // Update a pet's details
+    public Pet updatePet(Long petID, Pet updatedPet) {
+        Pet existingPet = getPetById(petID);
+        existingPet.setName(updatedPet.getName());
+        existingPet.setSpecies(updatedPet.getSpecies());
+        existingPet.setBreed(updatedPet.getBreed());
+        existingPet.setAge(updatedPet.getAge());
+        existingPet.setSex(updatedPet.getSex());
+        existingPet.setWeight(updatedPet.getWeight());
+        existingPet.setHost(updatedPet.getHost());
+        return petRepository.save(existingPet);
+    }
+
+    // Delete a pet by ID
+    public void deletePet(Long petID) {
+        petRepository.deleteById(petID);
     }
 }
