@@ -32,7 +32,7 @@ public class AppointmentController {
         return appointmentService.getAppointmentById(appointmentID);
     }
 
-    // Update an appointment
+    // Update an appointmentt
     @PutMapping("/{appointmentID}")
     public Appointment updateAppointment(@PathVariable Long appointmentID, @RequestBody Appointment updatedAppointment) {
         return appointmentService.updateAppointment(appointmentID, updatedAppointment);
