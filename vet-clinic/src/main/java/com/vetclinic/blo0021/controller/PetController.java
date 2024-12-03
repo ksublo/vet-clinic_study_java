@@ -19,9 +19,6 @@ public class PetController {
     private PetService petService;
 
     @Autowired
-    private HostService hostService;
-
-    @Autowired
     private HostRepository hostRepository;
 
     // Fetch all pets
