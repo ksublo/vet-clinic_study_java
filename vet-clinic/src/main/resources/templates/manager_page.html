@@ -90,6 +90,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" id="pets-link">Pets</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="appointments-link">Appointments</a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -205,42 +208,29 @@
         <div class="col-md-5">
             <div class="form-section" id="new-pet-form">
                 <h2>Register New Pet</h2>
-                <!-- Pet Registration Form -->
                 <form id="create-pet-form">
-                    <!-- Host Selection -->
                     <div class="form-group">
                         <label for="hostID">Select Host</label>
                         <select id="hostID" name="hostID" class="form-control" required>
                             <option value="" disabled selected>Select Host</option>
-                            <!-- Hosts will be dynamically populated here -->
                         </select>
                     </div>
-
-                    <!-- Pet Name -->
                     <div class="form-group">
                         <label for="petName">Pet Name</label>
                         <input type="text" id="petName" name="name" class="form-control" placeholder="Enter Pet Name" required>
                     </div>
-
-                    <!-- Species -->
                     <div class="form-group">
                         <label for="species">Species</label>
                         <input type="text" id="species" name="species" class="form-control" placeholder="Enter Species" required>
                     </div>
-
-                    <!-- Breed -->
                     <div class="form-group">
                         <label for="breed">Breed</label>
                         <input type="text" id="breed" name="breed" class="form-control" placeholder="Enter Breed">
                     </div>
-
-                    <!-- Age -->
                     <div class="form-group">
                         <label for="age">Age</label>
                         <input type="number" id="age" name="age" class="form-control" placeholder="Enter Age" min="1" required>
                     </div>
-
-                    <!-- Sex -->
                     <div class="form-group">
                         <label for="sex">Sex</label>
                         <select id="sex" name="sex" class="form-control" required>
@@ -248,8 +238,6 @@
                             <option value="F">Female</option>
                         </select>
                     </div>
-
-                    <!-- Weight -->
                     <div class="form-group">
                         <label for="weight">Weight</label>
                         <input type="number" id="weight" name="weight" class="form-control" placeholder="Enter Weight" step="0.01" min="0" required>
@@ -274,6 +262,7 @@
                         <th>Age</th>
                         <th>Sex</th>
                         <th>Weight</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody id="pet-list">
@@ -283,6 +272,68 @@
         </div>
     </div>
 </div>
+
+<!-- New Appointment Form -->
+<div class="container" id="appointments-section" style="display: none;">
+    <h1 class="text-center">APPOINTMENTS</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-section" id="new-appointment-form">
+                <h2>Create New Appointment</h2>
+                <form id="create-appointment-form">
+                    <div class="form-group">
+                        <label for="appointmentDate">Date</label>
+                        <input type="date" id="appointmentDate" name="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentTime">Time</label>
+                        <input type="time" id="appointmentTime" name="time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentPet">Select Pet</label>
+                        <select id="appointmentPet" name="petID" class="form-control" required>
+                            <option value="" disabled selected>Select Pet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDoctor">Select Doctor</label>
+                        <select id="appointmentDoctor" name="doctorID" class="form-control" required>
+                            <option value="" disabled selected>Select Doctor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentNotes">Notes</label>
+                        <textarea id="appointmentNotes" name="notes" class="form-control" rows="4" placeholder="Enter any notes..." maxlength="500"></textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Create Appointment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="doctor-list-section" id="appointment-list-section">
+                <h3>All Appointments</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Pet</th>
+                        <th>Doctor</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="appointment-list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <footer>
     <p>&copy; 2024 Vet Clinic | All Rights Reserved</p>
@@ -297,6 +348,7 @@
         event.preventDefault();
         document.getElementById('hosts-section').style.display = 'none';
         document.getElementById('pet-section').style.display = 'none';
+        document.getElementById('appointments-section').style.display = 'none';
         const doctorsSection = document.getElementById('doctors-section');
         if (doctorsSection.style.display === 'none' || doctorsSection.style.display === '') {
             doctorsSection.style.display = 'block';
@@ -305,11 +357,11 @@
         }
     });
 
-    // Toggle the visibility of hosts section based on navbar click
     document.getElementById('hosts-link').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('doctors-section').style.display = 'none';
         document.getElementById('pet-section').style.display = 'none';
+        document.getElementById('appointments-section').style.display = 'none';
         const hostsSection = document.getElementById('hosts-section');
         if (hostsSection.style.display === 'none' || hostsSection.style.display === '') {
             hostsSection.style.display = 'block';
@@ -318,11 +370,11 @@
         }
     });
 
-    // Toggle the visibility of pets section based on navbar click
     document.getElementById('pets-link').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('doctors-section').style.display = 'none';
         document.getElementById('hosts-section').style.display = 'none';
+        document.getElementById('appointments-section').style.display = 'none';
         const petSection = document.getElementById('pet-section');
         if (petSection.style.display === 'none' || petSection.style.display === '') {
             petSection.style.display = 'block';
@@ -331,11 +383,24 @@
         }
     });
 
+    document.getElementById('appointments-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('doctors-section').style.display = 'none';
+        document.getElementById('hosts-section').style.display = 'none';
+        document.getElementById('pet-section').style.display = 'none';
+        const appointmentsSection = document.getElementById('appointments-section');
+        if (appointmentsSection.style.display === 'none' || appointmentsSection.style.display === '') {
+            appointmentsSection.style.display = 'block';
+        } else {
+            appointmentsSection.style.display = 'none';
+        }
+    });
+
     window.onload = function() {
         fetchDoctors();
         fetchHosts();
-        populateHostDropdown();
         fetchPets();
+        fetchAppointments();
     }
 
     function fetchDoctors() {
@@ -344,17 +409,24 @@
             .then(doctors => {
                 const doctorListContainer = document.getElementById('doctor-list');
                 doctorListContainer.innerHTML = '';
+
                 doctors.forEach(doctor => {
                     const doctorRow = `
-
-                        <tr>
-                            <td>${doctor.firstName}</td>
-                            <td>${doctor.lastName}</td>
-                            <td>${doctor.specialization}</td>
-                            <td><button class="btn btn-danger" onclick="deleteDoctor(${doctor.doctorID})">Delete</button></td>
-                        </tr>
-                    `;
+                    <tr>
+                        <td>${doctor.firstName}</td>
+                        <td>${doctor.lastName}</td>
+                        <td>${doctor.specialization}</td>
+                        <td><button class="btn btn-danger" onclick="deleteDoctor(${doctor.doctorID})">Delete</button></td>
+                    </tr>
+                `;
                     doctorListContainer.innerHTML += doctorRow;
+                });
+
+                const doctorSelect = document.getElementById('appointmentDoctor');
+                doctorSelect.innerHTML = '';
+                doctorSelect.innerHTML += `<option value="" disabled selected>Select Doctor</option>`;
+                doctors.forEach(doctor => {
+                    doctorSelect.innerHTML += `<option value="${doctor.doctorID}">${doctor.firstName} ${doctor.lastName}</option>`;
                 });
             })
             .catch(error => console.error('Error fetching doctors:', error));
@@ -380,27 +452,10 @@
                     hostListContainer.innerHTML += hostRow;
                 });
 
-                // Populate the Select Host dropdown
                 const hostSelect = document.getElementById('hostID');
-                hostSelect.innerHTML = ''; // Clear any existing options
+                hostSelect.innerHTML = '';
                 hostSelect.innerHTML += `<option value="" disabled selected>Select Host</option>`;
                 hosts.forEach(host => {
-                    hostSelect.innerHTML += `<option value="${host.hostID}">${host.firstName} ${host.lastName}</option>`;
-                });
-            })
-            .catch(error => console.error('Error fetching hosts:', error));
-    }
-
-    function populateHostDropdown() {
-        fetch('/hosts')
-            .then(response => response.json())
-            .then(hosts => {
-                const hostSelect = document.getElementById('hostID');
-                hostSelect.innerHTML = ''; // Clear any existing options
-                hostSelect.innerHTML += `<option value="" disabled selected>Select Host</option>`;
-
-                hosts.forEach(host => {
-                    // Here we use host.hostID as the value and host.firstName, host.lastName as the label
                     hostSelect.innerHTML += `<option value="${host.hostID}">${host.firstName} ${host.lastName}</option>`;
                 });
             })
@@ -413,22 +468,69 @@
             .then(pets => {
                 const petListContainer = document.getElementById('pet-list');
                 petListContainer.innerHTML = '';
+
                 pets.forEach(pet => {
                     const petRow = `
-                        <tr>
-                            <td>${pet.name}</td>
-                            <td>${pet.species}</td>
-                            <td>${pet.breed}</td>
-                            <td>${pet.age}</td>
-                            <td>${pet.sex}</td>
-                            <td>${pet.weight}</td>
-                            <td><button class="btn btn-danger" onclick="deletePet(${pet.petID})">Delete</button></td>
-                        </tr>
-                    `;
+                    <tr>
+                        <td>${pet.name}</td>
+                        <td>${pet.species}</td>
+                        <td>${pet.breed}</td>
+                        <td>${pet.age}</td>
+                        <td>${pet.sex}</td>
+                        <td>${pet.weight}</td>
+                        <td><button class="btn btn-danger" onclick="deletePet(${pet.petID})">Delete</button></td>
+                    </tr>
+                `;
                     petListContainer.innerHTML += petRow;
+                });
+
+                const petSelect = document.getElementById('appointmentPet');
+                petSelect.innerHTML = '';
+                petSelect.innerHTML += `<option value="" disabled selected>Select Pet</option>`;
+                pets.forEach(pet => {
+                    petSelect.innerHTML += `<option value="${pet.petID}">${pet.name} (${pet.species})</option>`;
                 });
             })
             .catch(error => console.error('Error fetching pets:', error));
+    }
+
+
+    function fetchAppointments() {
+        fetch('/appointments')
+            .then(response => response.json())
+            .then(appointments => {
+                const appointmentListContainer = document.getElementById('appointment-list');
+                appointmentListContainer.innerHTML = '';
+
+                appointments.forEach(appointment => {
+                    const dateTime = appointment.dateTime;
+                    const date = dateTime.split('T')[0];
+                    const time = dateTime.split('T')[1];
+
+                    fetch(`/pets/${appointment.petID}`)
+                        .then(response => response.json())
+                        .then(pet => {
+                            fetch(`/doctors/${appointment.doctorID}`)
+                                .then(response => response.json())
+                                .then(doctor => {
+                                    const appointmentRow = `
+                                    <tr>
+                                        <td>${date}</td>
+                                        <td>${time}</td>
+                                        <td>${pet.name}</td>
+                                        <td>${doctor.firstName} ${doctor.lastName}</td>
+                                        <td>${appointment.notes}</td>
+                                        <td><button class="btn btn-danger" onclick="deleteAppointment(${appointment.appointmentID})">Delete</button></td>
+                                    </tr>
+                                `;
+                                    appointmentListContainer.innerHTML += appointmentRow;
+                                })
+                                .catch(error => console.error('Error fetching doctor:', error));
+                        })
+                        .catch(error => console.error('Error fetching pet:', error));
+                });
+            })
+            .catch(error => console.error('Error fetching appointments:', error));
     }
 
     document.getElementById('create-doctor-form').addEventListener('submit', function(event) {
@@ -455,6 +557,42 @@
             })
             .catch(error => console.error('Error creating doctor:', error));
     });
+
+    document.getElementById('create-appointment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        const date = formData.get('date');
+        const time = formData.get('time');
+        const dateTime = `${date}T${time}`;
+
+        const appointment = {
+            dateTime: dateTime,
+            notes: formData.get('notes'),
+            doctor: { doctorID: formData.get('doctorID') },
+            pet: { petID: formData.get('petID') }
+        };
+
+        console.log('Appointment Data:', appointment);
+
+
+        fetch('/appointments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(appointment)
+        })
+            .then(response => response.json())
+            .then(newAppointment => {
+                console.log('Appointment created:', newAppointment);
+                fetchAppointments();
+                document.getElementById('create-appointment-form').reset();
+            })
+            .catch(error => console.error('Error creating appointment:', error));
+    });
+
 
     function deleteDoctor(doctorID) {
         fetch(`/doctors/${doctorID}`, {
@@ -514,33 +652,31 @@
     document.getElementById('create-pet-form').addEventListener('submit', function(event) {
         event.preventDefault();
 
-        // Get the values from the form
         const formData = new FormData(this);
         const pet = {
-            hostID: formData.get('hostID'), // Fetch the hostID from the dropdown
+            host: { hostID: formData.get('hostID') },
             name: formData.get('name'),
             species: formData.get('species'),
             breed: formData.get('breed'),
-            age: formData.get('age'), // Convert age to integer
+            age: formData.get('age'),
             sex: formData.get('sex'),
-            weight: formData.get('weight') // Convert weight to float
+            weight: formData.get('weight')
         };
 
         console.log('Pet Data:', pet);
 
-        // Send POST request to create the pet
         fetch('/pets', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(pet) // Send the pet data as JSON
+            body: JSON.stringify(pet)
         })
             .then(response => response.json())
             .then(newPet => {
                 console.log('Pet created:', newPet);
-                fetchPets(); // Refresh the pet list
-                document.getElementById('create-pet-form').reset(); // Reset the form
+                fetchPets();
+                document.getElementById('create-pet-form').reset();
             })
             .catch(error => console.error('Error creating pet:', error));
     });
@@ -558,6 +694,21 @@
                 }
             })
             .catch(error => console.error('Error deleting pet:', error));
+    }
+
+    function deleteAppointment(appointmentID) {
+        fetch(`/appointments/${appointmentID}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Appointment deleted successfully');
+                    fetchAppointments();
+                } else {
+                    console.error('Error deleting appointment');
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 </script>
 
