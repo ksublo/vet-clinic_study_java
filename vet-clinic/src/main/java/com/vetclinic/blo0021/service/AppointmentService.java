@@ -24,13 +24,13 @@ public class AppointmentService {
     }
 
     // Find an appointment by ID
-    public Appointment getAppointmentById(Long appointmentID) {
+    public Appointment getAppointmentById(int appointmentID) {
         return appointmentRepository.findById(appointmentID)
                 .orElseThrow(() -> new RuntimeException("Appointment not found!"));
     }
 
     // Update an appointment
-    public Appointment updateAppointment(Long appointmentID, Appointment updatedAppointment) {
+    public Appointment updateAppointment(int appointmentID, Appointment updatedAppointment) {
         Appointment appointment = getAppointmentById(appointmentID);
         appointment.setDateTime(updatedAppointment.getDateTime());
         appointment.setNotes(updatedAppointment.getNotes());
@@ -42,7 +42,7 @@ public class AppointmentService {
     }
 
     // Delete an appointment
-    public void deleteAppointment(Long appointmentID) {
+    public void deleteAppointment(int appointmentID) {
         appointmentRepository.deleteById(appointmentID);
     }
 }

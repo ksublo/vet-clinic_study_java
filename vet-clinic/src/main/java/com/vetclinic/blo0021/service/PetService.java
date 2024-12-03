@@ -24,13 +24,13 @@ public class PetService {
     }
 
     // Get a pet by ID
-    public Pet getPetById(Long petID) {
+    public Pet getPetById(int petID) {
         return petRepository.findById(petID)
                 .orElseThrow(() -> new RuntimeException("Pet not found!"));
     }
 
     // Update a pet's details
-    public Pet updatePet(Long petID, Pet updatedPet) {
+    public Pet updatePet(int petID, Pet updatedPet) {
         Pet existingPet = getPetById(petID);
         existingPet.setName(updatedPet.getName());
         existingPet.setSpecies(updatedPet.getSpecies());
@@ -43,7 +43,7 @@ public class PetService {
     }
 
     // Delete a pet by ID
-    public void deletePet(Long petID) {
+    public void deletePet(int petID) {
         petRepository.deleteById(petID);
     }
 }

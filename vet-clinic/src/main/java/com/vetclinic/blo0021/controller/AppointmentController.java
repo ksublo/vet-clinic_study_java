@@ -28,19 +28,19 @@ public class AppointmentController {
 
     // Get a specific appointment by ID
     @GetMapping("/{appointmentID}")
-    public Appointment getAppointmentById(@PathVariable Long appointmentID) {
+    public Appointment getAppointmentById(@PathVariable int appointmentID) {
         return appointmentService.getAppointmentById(appointmentID);
     }
 
     // Update an appointment
     @PutMapping("/{appointmentID}")
-    public Appointment updateAppointment(@PathVariable Long appointmentID, @RequestBody Appointment updatedAppointment) {
+    public Appointment updateAppointment(@PathVariable int appointmentID, @RequestBody Appointment updatedAppointment) {
         return appointmentService.updateAppointment(appointmentID, updatedAppointment);
     }
 
     // Delete an appointment
     @DeleteMapping("/{appointmentID}")
-    public void deleteAppointment(@PathVariable Long appointmentID) {
+    public void deleteAppointment(@PathVariable int appointmentID) {
         appointmentService.deleteAppointment(appointmentID);
     }
 }

@@ -24,12 +24,12 @@ public class HostService {
     }
 
     // Find a host by ID
-    public Host getHostById(Long hostID) {
+    public Host getHostById(int hostID) {
         return hostRepository.findById(hostID).orElseThrow(() -> new RuntimeException("Host not found!"));
     }
 
     // Update a host's details
-    public Host updateHost(Long hostID, Host updatedHost) {
+    public Host updateHost(int hostID, Host updatedHost) {
         Host host = getHostById(hostID);
         host.setFirstName(updatedHost.getFirstName());
         host.setLastName(updatedHost.getLastName());
@@ -40,7 +40,7 @@ public class HostService {
     }
 
     // Delete a host
-    public void deleteHost(Long hostID) {
+    public void deleteHost(int hostID) {
         hostRepository.deleteById(hostID);
     }
 }

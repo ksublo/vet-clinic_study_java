@@ -25,17 +25,17 @@ public class MedicineController {
     }
 
     @GetMapping("/{medicineID}")
-    public Medicine getMedicineById(@PathVariable Long medicineID) {
+    public Medicine getMedicineById(@PathVariable int medicineID) {
         return medicineService.getMedicineById(medicineID);
     }
 
     @PutMapping("/{medicineID}")
-    public Medicine updateMedicine(@PathVariable Long medicineID, @RequestBody Medicine updatedMedicine) {
+    public Medicine updateMedicine(@PathVariable int medicineID, @RequestBody Medicine updatedMedicine) {
         return medicineService.updateMedicine(medicineID, updatedMedicine);
     }
 
     @DeleteMapping("/{medicineID}")
-    public void deleteMedicine(@PathVariable Long medicineID) {
+    public void deleteMedicine(@PathVariable int medicineID) {
         medicineService.deleteMedicine(medicineID);
     }
 }

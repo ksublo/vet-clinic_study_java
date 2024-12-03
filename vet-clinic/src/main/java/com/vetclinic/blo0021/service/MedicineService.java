@@ -21,19 +21,19 @@ public class MedicineService {
         return medicineRepository.save(medicine);
     }
 
-    public Medicine getMedicineById(Long medicineID) {
+    public Medicine getMedicineById(int medicineID) {
         return medicineRepository.findById(medicineID)
                 .orElseThrow(() -> new RuntimeException("Medicine not found!"));
     }
 
-    public Medicine updateMedicine(Long medicineID, Medicine updatedMedicine) {
+    public Medicine updateMedicine(int medicineID, Medicine updatedMedicine) {
         Medicine medicine = getMedicineById(medicineID);
         medicine.setName(updatedMedicine.getName());
         medicine.setDescription(updatedMedicine.getDescription());
         return medicineRepository.save(medicine);
     }
 
-    public void deleteMedicine(Long medicineID) {
+    public void deleteMedicine(int medicineID) {
         medicineRepository.deleteById(medicineID);
     }
 }

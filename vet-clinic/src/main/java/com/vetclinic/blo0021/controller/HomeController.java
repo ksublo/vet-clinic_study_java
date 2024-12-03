@@ -8,6 +8,11 @@ public class HomeController {
 
     @GetMapping("/welcome")
     public String welcome() {
-        return "welcome";
+        return "index";
+    }
+
+    @GetMapping("/manager")
+    public String manager() {
+        return "manager_page";
     }
 }

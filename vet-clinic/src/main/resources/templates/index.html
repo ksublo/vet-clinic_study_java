@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Clinic</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #cce7da;
+            color: #31154a;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #acb8d2;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .info-card {
+            background-color: #acb8d2;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            color: #31154a;
+        }
+
+        .testimonial-card {
+            background-color: #acb8d2;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            color: #31154a;
+        }
+
+        .info-card:hover, .testimonial-card:hover, .contact-card:hover {
+            transform: scale(1.05);
+        }
+
+        .rounded-img {
+            border-radius: 25%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .rounded-img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-spacing {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        nav.navbar {
+            background-color: #acb8d2;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #31154a !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Vet Clinic</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- About Section -->
+<div id="about" class="container mt-5 section-spacing">
+    <div class="row">
+        <div class="col-lg-6 about-text">
+            <h2>About Our Clinic</h2>
+            <p>
+                At Vet Clinic, we provide the highest quality care for your pets. Our team of expert veterinarians
+                are dedicated to the health and well-being of your furry friends. From routine check-ups to
+                emergency services, we offer comprehensive care for all types of pets.
+            </p>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center">
+            <img src="images/start.png" class="img-fluid rounded-img" alt="Vet Clinic">
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div id="services" class="container mt-5 section-spacing">
+    <h2 class="text-center">Our Services</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card info-card">
+                <div class="card-header">Routine Check-ups</div>
+                <div class="card-body">
+                    <p>Regular health exams to keep your pet healthy and happy.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card info-card">
+                <div class="card-header">Emergency Services</div>
+                <div class="card-body">
+                    <p>Immediate care for accidents, injuries, and medical emergencies.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card info-card">
+                <div class="card-header">Surgical Services</div>
+                <div class="card-body">
+                    <p>Advanced surgery options for your pet's health and recovery.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div id="testimonials" class="container mt-5 section-spacing">
+    <h2 class="text-center">What Our Clients Say</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <p><strong>John Doe</strong> - "The best veterinary service I've ever used! The staff are friendly, and the care is exceptional."</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card testimonial-card">
+                <div class="card-body">
+                    <p><strong>Jane Smith</strong> - "I trust them completely with my pets. They always provide the best care and advice."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Manager Page Button -->
+<div class="text-center mt-4">
+    <a href="/manager" class="nav-link">Manager Page</a>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Vet Clinic | All Rights Reserved</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

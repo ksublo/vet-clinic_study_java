@@ -28,19 +28,19 @@ public class HostController {
 
     // Get a specific host by ID
     @GetMapping("/{hostID}")
-    public Host getHostById(@PathVariable Long hostID) {
+    public Host getHostById(@PathVariable int hostID) {
         return hostService.getHostById(hostID);
     }
 
     // Update a host's details
     @PutMapping("/{hostID}")
-    public Host updateHost(@PathVariable Long hostID, @RequestBody Host updatedHost) {
+    public Host updateHost(@PathVariable int hostID, @RequestBody Host updatedHost) {
         return hostService.updateHost(hostID, updatedHost);
     }
 
     // Delete a host
     @DeleteMapping("/{hostID}")
-    public void deleteHost(@PathVariable Long hostID) {
+    public void deleteHost(@PathVariable int hostID) {
         hostService.deleteHost(hostID);
     }
 }

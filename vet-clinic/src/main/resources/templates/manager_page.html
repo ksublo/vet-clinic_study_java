@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Clinic - Manager</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #cce7da;
+            color: #31154a;
+        }
+
+        footer {
+            margin-top: 100px;
+            background-color: #acb8d2;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #acb8d2;
+            margin-bottom: 50px;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #31154a !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        .nav-link {
+            font-size: 1.0rem;
+        }
+
+        .form-section,
+        .doctor-list-section,
+        .host-list-section,
+        .pet-list-section {
+            margin-top: 50px;
+        }
+
+        .form-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .doctor-list-section,
+        .host-list-section,
+        .pet-list-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .form-section h2,
+        .doctor-list-section h3,
+        .host-list-section h3,
+        .pet-list-section h3 {
+            text-align: center;
+        }
+
+        #doctors-section, #hosts-section, #pet-section {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Vet Clinic</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="doctors-link">Doctors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="hosts-link">Hosts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="pets-link">Pets</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Doctors Section -->
+<div class="container" id="doctors-section">
+    <h1 class="text-center">DOCTORS</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-section" id="new-doctor-form">
+                <h2>Create New Doctor</h2>
+                <form id="create-doctor-form">
+                    <div class="form-group">
+                        <label for="doctorFirstName">First Name</label>
+                        <input type="text" id="doctorFirstName" name="firstName" class="form-control" placeholder="Enter First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorLastName">Last Name</label>
+                        <input type="text" id="doctorLastName" name="lastName" class="form-control" placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorSpecialization">Specialization</label>
+                        <input type="text" id="doctorSpecialization" name="specialization" class="form-control" placeholder="Enter Specialization" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Create Doctor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="doctor-list-section" id="doctor-list-section">
+                <h3>All Doctors</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Specialization</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="doctor-list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hosts Section -->
+<div class="container" id="hosts-section">
+    <h1 class="text-center">HOSTS</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-section" id="new-host-form">
+                <h2>Create New Host</h2>
+                <form id="create-host-form">
+                    <div class="form-group">
+                        <label for="hostFirstName">First Name</label>
+                        <input type="text" id="hostFirstName" name="firstName" class="form-control" placeholder="Enter First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hostLastName">Last Name</label>
+                        <input type="text" id="hostLastName" name="lastName" class="form-control" placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" class="form-control" placeholder="Enter Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Create Host</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="host-list-section" id="host-list-section">
+                <h3>All Hosts</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="host-list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pet Section -->
+<div class="container" id="pet-section">
+    <h1 class="text-center">PET REGISTRATION</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-section" id="new-pet-form">
+                <h2>Register New Pet</h2>
+                <!-- Pet Registration Form -->
+                <form id="create-pet-form">
+                    <!-- Host Selection -->
+                    <div class="form-group">
+                        <label for="hostID">Select Host</label>
+                        <select id="hostID" name="hostID" class="form-control" required>
+                            <option value="" disabled selected>Select Host</option>
+                            <!-- Hosts will be dynamically populated here -->
+                        </select>
+                    </div>
+
+                    <!-- Pet Name -->
+                    <div class="form-group">
+                        <label for="petName">Pet Name</label>
+                        <input type="text" id="petName" name="name" class="form-control" placeholder="Enter Pet Name" required>
+                    </div>
+
+                    <!-- Species -->
+                    <div class="form-group">
+                        <label for="species">Species</label>
+                        <input type="text" id="species" name="species" class="form-control" placeholder="Enter Species" required>
+                    </div>
+
+                    <!-- Breed -->
+                    <div class="form-group">
+                        <label for="breed">Breed</label>
+                        <input type="text" id="breed" name="breed" class="form-control" placeholder="Enter Breed">
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" class="form-control" placeholder="Enter Age" min="1" required>
+                    </div>
+
+                    <!-- Sex -->
+                    <div class="form-group">
+                        <label for="sex">Sex</label>
+                        <select id="sex" name="sex" class="form-control" required>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="form-group">
+                        <label for="weight">Weight</label>
+                        <input type="number" id="weight" name="weight" class="form-control" placeholder="Enter Weight" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Register Pet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="pet-list-section" id="pet-list-section">
+                <h3>All Pets</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Pet Name</th>
+                        <th>Species</th>
+                        <th>Breed</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Weight</th>
+                    </tr>
+                    </thead>
+                    <tbody id="pet-list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Vet Clinic | All Rights Reserved</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('doctors-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('hosts-section').style.display = 'none';
+        document.getElementById('pet-section').style.display = 'none';
+        const doctorsSection = document.getElementById('doctors-section');
+        if (doctorsSection.style.display === 'none' || doctorsSection.style.display === '') {
+            doctorsSection.style.display = 'block';
+        } else {
+            doctorsSection.style.display = 'none';
+        }
+    });
+
+    // Toggle the visibility of hosts section based on navbar click
+    document.getElementById('hosts-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('doctors-section').style.display = 'none';
+        document.getElementById('pet-section').style.display = 'none';
+        const hostsSection = document.getElementById('hosts-section');
+        if (hostsSection.style.display === 'none' || hostsSection.style.display === '') {
+            hostsSection.style.display = 'block';
+        } else {
+            hostsSection.style.display = 'none';
+        }
+    });
+
+    // Toggle the visibility of pets section based on navbar click
+    document.getElementById('pets-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('doctors-section').style.display = 'none';
+        document.getElementById('hosts-section').style.display = 'none';
+        const petSection = document.getElementById('pet-section');
+        if (petSection.style.display === 'none' || petSection.style.display === '') {
+            petSection.style.display = 'block';
+        } else {
+            petSection.style.display = 'none';
+        }
+    });
+
+    window.onload = function() {
+        fetchDoctors();
+        fetchHosts();
+        populateHostDropdown();
+        fetchPets();
+    }
+
+    function fetchDoctors() {
+        fetch('/doctors')
+            .then(response => response.json())
+            .then(doctors => {
+                const doctorListContainer = document.getElementById('doctor-list');
+                doctorListContainer.innerHTML = '';
+                doctors.forEach(doctor => {
+                    const doctorRow = `
+
+                        <tr>
+                            <td>${doctor.firstName}</td>
+                            <td>${doctor.lastName}</td>
+                            <td>${doctor.specialization}</td>
+                            <td><button class="btn btn-danger" onclick="deleteDoctor(${doctor.doctorID})">Delete</button></td>
+                        </tr>
+                    `;
+                    doctorListContainer.innerHTML += doctorRow;
+                });
+            })
+            .catch(error => console.error('Error fetching doctors:', error));
+    }
+
+    function fetchHosts() {
+        fetch('/hosts')
+            .then(response => response.json())
+            .then(hosts => {
+                const hostListContainer = document.getElementById('host-list');
+                hostListContainer.innerHTML = '';
+                hosts.forEach(host => {
+                    const hostRow = `
+                        <tr>
+                            <td>${host.firstName}</td>
+                            <td>${host.lastName}</td>
+                            <td>${host.address}</td>
+                            <td>${host.phone}</td>
+                            <td>${host.email}</td>
+                            <td><button class="btn btn-danger" onclick="deleteHost(${host.hostID})">Delete</button></td>
+                        </tr>
+                    `;
+                    hostListContainer.innerHTML += hostRow;
+                });
+
+                // Populate the Select Host dropdown
+                const hostSelect = document.getElementById('hostID');
+                hostSelect.innerHTML = ''; // Clear any existing options
+                hostSelect.innerHTML += `<option value="" disabled selected>Select Host</option>`;
+                hosts.forEach(host => {
+                    hostSelect.innerHTML += `<option value="${host.hostID}">${host.firstName} ${host.lastName}</option>`;
+                });
+            })
+            .catch(error => console.error('Error fetching hosts:', error));
+    }
+
+    function populateHostDropdown() {
+        fetch('/hosts')
+            .then(response => response.json())
+            .then(hosts => {
+                const hostSelect = document.getElementById('hostID');
+                hostSelect.innerHTML = ''; // Clear any existing options
+                hostSelect.innerHTML += `<option value="" disabled selected>Select Host</option>`;
+
+                hosts.forEach(host => {
+                    // Here we use host.hostID as the value and host.firstName, host.lastName as the label
+                    hostSelect.innerHTML += `<option value="${host.hostID}">${host.firstName} ${host.lastName}</option>`;
+                });
+            })
+            .catch(error => console.error('Error fetching hosts:', error));
+    }
+
+    function fetchPets() {
+        fetch('/pets')
+            .then(response => response.json())
+            .then(pets => {
+                const petListContainer = document.getElementById('pet-list');
+                petListContainer.innerHTML = '';
+                pets.forEach(pet => {
+                    const petRow = `
+                        <tr>
+                            <td>${pet.name}</td>
+                            <td>${pet.species}</td>
+                            <td>${pet.breed}</td>
+                            <td>${pet.age}</td>
+                            <td>${pet.sex}</td>
+                            <td>${pet.weight}</td>
+                            <td><button class="btn btn-danger" onclick="deletePet(${pet.petID})">Delete</button></td>
+                        </tr>
+                    `;
+                    petListContainer.innerHTML += petRow;
+                });
+            })
+            .catch(error => console.error('Error fetching pets:', error));
+    }
+
+    document.getElementById('create-doctor-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const doctor = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            specialization: formData.get('specialization')
+        };
+
+        fetch('/doctors', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(doctor)
+        })
+            .then(response => response.json())
+            .then(newDoctor => {
+                console.log('Doctor created:', newDoctor);
+                fetchDoctors();
+                document.getElementById('create-doctor-form').reset();
+            })
+            .catch(error => console.error('Error creating doctor:', error));
+    });
+
+    function deleteDoctor(doctorID) {
+        fetch(`/doctors/${doctorID}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    fetchDoctors();
+                } else {
+                    console.error('Error deleting doctor');
+                }
+            })
+            .catch(error => console.error('Error deleting doctor:', error));
+    }
+
+    document.getElementById('create-host-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const host = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            address: formData.get('address'),
+            phone: formData.get('phone'),
+            email: formData.get('email')
+        };
+
+        fetch('/hosts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(host)
+        })
+            .then(response => response.json())
+            .then(newHost => {
+                console.log('Host created:', newHost);
+                fetchHosts();
+                document.getElementById('create-host-form').reset();
+            })
+            .catch(error => console.error('Error creating host:', error));
+    });
+
+    function deleteHost(hostID) {
+        fetch(`/hosts/${hostID}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    fetchHosts();
+                } else {
+                    console.error('Error deleting host');
+                }
+            })
+            .catch(error => console.error('Error deleting host:', error));
+    }
+
+    document.getElementById('create-pet-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get the values from the form
+        const formData = new FormData(this);
+        const pet = {
+            hostID: formData.get('hostID'), // Fetch the hostID from the dropdown
+            name: formData.get('name'),
+            species: formData.get('species'),
+            breed: formData.get('breed'),
+            age: formData.get('age'), // Convert age to integer
+            sex: formData.get('sex'),
+            weight: formData.get('weight') // Convert weight to float
+        };
+
+        console.log('Pet Data:', pet);
+
+        // Send POST request to create the pet
+        fetch('/pets', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pet) // Send the pet data as JSON
+        })
+            .then(response => response.json())
+            .then(newPet => {
+                console.log('Pet created:', newPet);
+                fetchPets(); // Refresh the pet list
+                document.getElementById('create-pet-form').reset(); // Reset the form
+            })
+            .catch(error => console.error('Error creating pet:', error));
+    });
+
+
+    function deletePet(petID) {
+        fetch(`/pets/${petID}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    fetchPets();
+                } else {
+                    console.error('Error deleting pet');
+                }
+            })
+            .catch(error => console.error('Error deleting pet:', error));
+    }
+</script>
+
+</body>
+</html>

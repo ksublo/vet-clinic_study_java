@@ -24,12 +24,12 @@ public class DoctorService {
     }
 
     // Find a doctor by ID
-    public Doctor getDoctorById(Long doctorID) {
+    public Doctor getDoctorById(int doctorID) {
         return doctorRepository.findById(doctorID).orElseThrow(() -> new RuntimeException("Doctor not found!"));
     }
 
     // Update a doctor's details
-    public Doctor updateDoctor(Long doctorID, Doctor updatedDoctor) {
+    public Doctor updateDoctor(int doctorID, Doctor updatedDoctor) {
         Doctor doctor = getDoctorById(doctorID);
         doctor.setFirstName(updatedDoctor.getFirstName());
         doctor.setLastName(updatedDoctor.getLastName());
@@ -38,7 +38,7 @@ public class DoctorService {
     }
 
     // Delete a doctor
-    public void deleteDoctor(Long doctorID) {
+    public void deleteDoctor(int doctorID) {
         doctorRepository.deleteById(doctorID);
     }
 }

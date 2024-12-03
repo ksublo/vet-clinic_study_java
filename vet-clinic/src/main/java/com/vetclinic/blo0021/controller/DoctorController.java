@@ -28,19 +28,19 @@ public class DoctorController {
 
     // Get a specific doctor by ID
     @GetMapping("/{doctorID}")
-    public Doctor getDoctorById(@PathVariable Long doctorID) {
+    public Doctor getDoctorById(@PathVariable int doctorID) {
         return doctorService.getDoctorById(doctorID);
     }
 
     // Update a doctor's details
     @PutMapping("/{doctorID}")
-    public Doctor updateDoctor(@PathVariable Long doctorID, @RequestBody Doctor updatedDoctor) {
+    public Doctor updateDoctor(@PathVariable int doctorID, @RequestBody Doctor updatedDoctor) {
         return doctorService.updateDoctor(doctorID, updatedDoctor);
     }
 
     // Delete a doctor
     @DeleteMapping("/{doctorID}")
-    public void deleteDoctor(@PathVariable Long doctorID) {
+    public void deleteDoctor(@PathVariable int doctorID) {
         doctorService.deleteDoctor(doctorID);
     }
 }
