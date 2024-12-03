@@ -51,7 +51,7 @@
 
         .doctor-list-section,
         .host-list-section,
-        .pet-list-section {
+        .pet-list-section{
             background-color: #f8f9fa;
             border-radius: 8px;
             padding: 20px;
@@ -82,6 +82,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+                <a class="nav-link" href="#" id="default">Home</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#" id="doctors-link">Doctors</a>
             </li>
             <li class="nav-item">
@@ -93,9 +96,58 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" id="appointments-link">Appointments</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/welcome" id="home">MainPage</a>
+            </li>
         </ul>
     </div>
 </nav>
+
+<!-- Home Section (Default Page) -->
+<div class="container" id="home-section">
+    <h1 class="text-center" style="margin-top: 75px;">Welcome to the Manager Dashboard</h1>
+    <p class="text-center">Choose an option to manage the system:</p>
+
+    <div class="row text-center">
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Appointments</h4>
+                    <p class="card-text">Manage appointments for pets and doctors.</p>
+                    <a href="#" id="appointments-link1" class="btn btn-primary">Go to Appointments</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Pets</h4>
+                    <p class="card-text">View and manage pet registrations.</p>
+                    <a href="#" id="pets-link1" class="btn btn-primary">Go to Pets</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Doctors</h4>
+                    <p class="card-text">Manage doctor details and information.</p>
+                    <a href="#" id="doctors-link1" class="btn btn-primary">Go to Doctors</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Hosts</h4>
+                    <p class="card-text">Manage host information and details.</p>
+                    <a href="#" id="hosts-link1" class="btn btn-primary">Go to Hosts</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Doctors Section -->
 <div class="container" id="doctors-section">
@@ -344,11 +396,45 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
+    document.getElementById('appointments-link1').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('home-section').style.display = 'none';
+        document.getElementById('appointments-section').style.display = 'block';
+    });
+
+    document.getElementById('pets-link1').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('home-section').style.display = 'none';
+        document.getElementById('pet-section').style.display = 'block';
+    });
+
+    document.getElementById('doctors-link1').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('home-section').style.display = 'none';
+        document.getElementById('doctors-section').style.display = 'block';
+    });
+
+    document.getElementById('hosts-link1').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('home-section').style.display = 'none';
+        document.getElementById('hosts-section').style.display = 'block';
+    });
+
+    document.getElementById('default').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('home-section').style.display = 'block';
+        document.getElementById('hosts-section').style.display = 'none';
+        document.getElementById('doctors-section').style.display = 'none';
+        document.getElementById('pet-section').style.display = 'none';
+        document.getElementById('appointments-section').style.display = 'none';
+    });
+
     document.getElementById('doctors-link').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('hosts-section').style.display = 'none';
         document.getElementById('pet-section').style.display = 'none';
         document.getElementById('appointments-section').style.display = 'none';
+        document.getElementById('default').style.display = 'none';
         const doctorsSection = document.getElementById('doctors-section');
         if (doctorsSection.style.display === 'none' || doctorsSection.style.display === '') {
             doctorsSection.style.display = 'block';
@@ -362,6 +448,7 @@
         document.getElementById('doctors-section').style.display = 'none';
         document.getElementById('pet-section').style.display = 'none';
         document.getElementById('appointments-section').style.display = 'none';
+        document.getElementById('default').style.display = 'none';
         const hostsSection = document.getElementById('hosts-section');
         if (hostsSection.style.display === 'none' || hostsSection.style.display === '') {
             hostsSection.style.display = 'block';
@@ -375,6 +462,7 @@
         document.getElementById('doctors-section').style.display = 'none';
         document.getElementById('hosts-section').style.display = 'none';
         document.getElementById('appointments-section').style.display = 'none';
+        document.getElementById('default').style.display = 'none';
         const petSection = document.getElementById('pet-section');
         if (petSection.style.display === 'none' || petSection.style.display === '') {
             petSection.style.display = 'block';
@@ -388,6 +476,7 @@
         document.getElementById('doctors-section').style.display = 'none';
         document.getElementById('hosts-section').style.display = 'none';
         document.getElementById('pet-section').style.display = 'none';
+        document.getElementById('default').style.display = 'none';
         const appointmentsSection = document.getElementById('appointments-section');
         if (appointmentsSection.style.display === 'none' || appointmentsSection.style.display === '') {
             appointmentsSection.style.display = 'block';
